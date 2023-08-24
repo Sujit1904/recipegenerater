@@ -1,0 +1,90 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Image Classification</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="jumbotron bg-primary">Image Classfication</h1>
+  <br><br>
+  <form class="form-horizontal" action="/submit" method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Upload Your Image :</label>
+      <div class="col-sm-10">          
+        <input type="file" class="form-control" placeholder="Hours Studied"  name="my_image" id="pwd">
+      </div>
+    </div>
+
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </form>
+
+	{% if prediction %}
+  <img src={{img_path}} a height="400px" width="400px">
+  
+  <span>`{{img_path}}</span>
+	<h2> Your Prediction   : <i> {{prediction}} </i></h2>
+
+	{% endif %}
+
+</div>
+
+
+
+
+
+
+
+</body>
+</html>
+ -->
+
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <title>Image Upload</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+     <meta charset="UTF-8">
+     <title>Image Classification</title>
+     
+ </head>
+ <body style="background-color:powderblue;">
+  <div class="container">
+    <h1>Upload an Image</h1>
+    <form action="{{ url_for('upload_file') }}" enctype="multipart/form-data" method="POST">
+        <label for="img">Select an image:</label>
+        <input name="img" type="file" accept="image/*" class="file-input">
+        <button type="submit" class="upload-button">Upload</button>
+    </form>
+ {% if prediction, img %}
+ <h1>Image Classification</h1>
+ <img src="{{img}}" height="400px" width="400px">
+ <span>`{{img_path}}</span>
+	<h2> Your Prediction   : <i> {{prediction}} </i></h2>
+  <h1>Recipe Details</h1>
+  <p><strong>Name:</strong> {{ recipe.name }}</p>
+  <p><strong>Ingredients:</strong><br>{{ recipe.Ingredients }}</p>
+  <p><strong>Recipe Steps:</strong><br>{{ recipe["Recipe Steps"] }}</p>
+  
+  
+ 
+	{% endif %}
+  <footer>
+    <p>Thank you so much, Gifti CM for your help. I really appreciate it.</p>
+</footer>
+ </body>
+ </html>
